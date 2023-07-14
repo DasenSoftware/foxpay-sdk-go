@@ -93,7 +93,6 @@ func StructToMap(obj interface{}) map[string]interface{} {
 		} else {
 			data[types.Tag.Get("mapstructure")] = value.Interface()
 		}
-
 	}
 	return data
 }
