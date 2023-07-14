@@ -42,14 +42,14 @@ foxpay.WithFoxPayObjPrivateKey("MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGB
 fp.GetBalance()
 
 //查询订单
-//OrderNO ，TradeNo 二选一或者都填
+//OrderNo ，TradeNo 二选一或者都填
 fp.GetApplicationOrder(common.OrderOrTradeNo{
 OrderNo: util.StringPtr("004"),
 TradeNo: util.StringPtr("AP2023071310442022925526694"),
 }))
 
 //关闭订单
-//OrderNO ，TradeNo 二选一或者都填
+//OrderNo ，TradeNo 二选一或者都填
 fp.CloseApplicationOrder(common.OrderOrTradeNo{
 OrderNo: util.StringPtr("004"),
 TradeNo: util.StringPtr("AP2023071310442022925526694"),
