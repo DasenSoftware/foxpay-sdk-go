@@ -1,0 +1,40 @@
+package util
+
+import (
+	"fmt"
+	"testing"
+)
+
+func TestGetPrivateKey(t *testing.T) {
+	privateKeyStr := `MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJ+lyn8mQzzRnTSpi24YO8tm29xIv11VlfbrvU9wIW2RUCnZ83ELFrBiHoSN3BvarvEPhJke9BvMBIQt5YSagZeafYviFaTcJGnsG6/RAAeYgEv5oc8q0xnzUH7XDsh7aflhny2/NE9SA+hXxbOSAJHKXtvhubUkS/CLW/k6ZH8jAgMBAAECgYBIHIiXn05eseX7DBw1Wg/kQ+1KlreNrqOC+Z+0upb22Vzm0pJiPNp+SIu1XyiNkl1T+KjxyygDSEe/9sVF/M5M2BLlbRvUZIZkBoSqyAHqKqF2EnAvC4jXNVxwQMspqmzu9WfUutKRihvQMoq1cLprWIXv4lTl/iILBNvWAOP1WQJBANHMQ21d5lJQ0WevxyHTEsQMTrsVHbB4RKyPdrUA7aGO/mu/cnggGqy/nCckTIBBsVOlyzihxNhe0UgQ6D4xIFkCQQDCzjbyu6YYpzJpfpuCPUTnp5kneYeV5kC0EjM8j4sy1liVjiVbI7eFifH/bLTo5xfjhjUdDinoo6KXS8kKigvbAkAc7Ecjbb2R/ZhQ7hfK3vmIU5YLDqcwK/RzwbeAzqb0De2fVx5l1y82P5g8gTGWwPe8a2/v18V2euPpRoNuB4HJAkEApmOOiWt/5iTBKVxLpUWB2j/Lz+y8w2tErsmw27Rbl9N/HFaqT5tFQJlfiuSl7Rydyeey7BtR7nP+By5jDE526wJAA2CyDIoE5+uqxxHlBpjEoN38XiO00ofWs7DZhPC2QcWi653JBLst9X6oDMBTMRiDdnpDSmNO9RFXorckgN+Ykw==-`
+	fmt.Println(GetPrivateKey(privateKeyStr))
+}
+
+func TestSign(t *testing.T) {
+	priviateKeyStr := `MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJ+lyn8mQzzRnTSpi24YO8tm29xIv11VlfbrvU9wIW2RUCnZ83ELFrBiHoSN3BvarvEPhJke9BvMBIQt5YSagZeafYviFaTcJGnsG6/RAAeYgEv5oc8q0xnzUH7XDsh7aflhny2/NE9SA+hXxbOSAJHKXtvhubUkS/CLW/k6ZH8jAgMBAAECgYBIHIiXn05eseX7DBw1Wg/kQ+1KlreNrqOC+Z+0upb22Vzm0pJiPNp+SIu1XyiNkl1T+KjxyygDSEe/9sVF/M5M2BLlbRvUZIZkBoSqyAHqKqF2EnAvC4jXNVxwQMspqmzu9WfUutKRihvQMoq1cLprWIXv4lTl/iILBNvWAOP1WQJBANHMQ21d5lJQ0WevxyHTEsQMTrsVHbB4RKyPdrUA7aGO/mu/cnggGqy/nCckTIBBsVOlyzihxNhe0UgQ6D4xIFkCQQDCzjbyu6YYpzJpfpuCPUTnp5kneYeV5kC0EjM8j4sy1liVjiVbI7eFifH/bLTo5xfjhjUdDinoo6KXS8kKigvbAkAc7Ecjbb2R/ZhQ7hfK3vmIU5YLDqcwK/RzwbeAzqb0De2fVx5l1y82P5g8gTGWwPe8a2/v18V2euPpRoNuB4HJAkEApmOOiWt/5iTBKVxLpUWB2j/Lz+y8w2tErsmw27Rbl9N/HFaqT5tFQJlfiuSl7Rydyeey7BtR7nP+By5jDE526wJAA2CyDIoE5+uqxxHlBpjEoN38XiO00ofWs7DZhPC2QcWi653JBLst9X6oDMBTMRiDdnpDSmNO9RFXorckgN+Ykw==`
+	pri, _ := GetPrivateKey(priviateKeyStr)
+	fmt.Println("pri===", pri)
+	str := "汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字啊啊啊啊啊啊啊啊啊啊"
+	fmt.Println(Sign(pri, str))
+}
+
+func TestGetPublicKey(t *testing.T) {
+	//pub := `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTuYN3nRoHAEFdm4YgssL/vnGO7JA5LtKadZK9Gv79nc8v21nnd1x4812QpcfAhxqTGb+n8/Z03chGA6cMxwuxvL+59LSoMwTZMG3e3VEfpTZNKCR9xqe+TmfR4QXoxszrIZvugx/aNVx0cGIGP/+JJR23atzB+DZx8Z1rONcF9wIDAQAB`
+	pub := "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC1hdJCWHPSMk8+E5tts6ynYTYE+y2MYvvR9UpM2fB6Pjz9fLpgls52tlRU1Bnzutd2iVO8rbRI56RzAAb+Bpa0fk6LTZzhHFifdvj5dngICr3Q0PkOjzFAtiMDggd9b0Ytw6HsBCdss9+y6WWH0+rHEN79b3x98rQyAsxytpiqDwIDAQAB"
+	fmt.Println(GetPublicKey(pub))
+}
+
+func TestRSAVerify(t *testing.T) {
+	pub := `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTuYN3nRoHAEFdm4YgssL/vnGO7JA5LtKadZK9Gv79nc8v21nnd1x4812QpcfAhxqTGb+n8/Z03chGA6cMxwuxvL+59LSoMwTZMG3e3VEfpTZNKCR9xqe+TmfR4QXoxszrIZvugx/aNVx0cGIGP/+JJR23atzB+DZx8Z1rONcF9wIDAQAB`
+
+	sign := `ZmrJtX6VsQ7mNPN3mR/nrkY+jdKb/FZs9J23yQXMvvbPc23Q0vw0O6cG9f0bQqPNnG4WZcEHhVXQ/rEIb7p4Eu8Wp8pjFsWS+Yz4jmjKlkKD/xZnlaRd+qUvI4VSDf9mFsHXHR2eGtbjzggzaNsKJgbha+1wip9Kt7Xp4RXC9ec=`
+	//sign = `KFvAlspdFu0ACrB1vyGzNh8IuXUoEypNt4vyflEsjaXjHoVOWkXcdaUUKcYJ3zu9NabNaq8jtzATgdgvKXCl6dCVCvVytSmYVHgDabYCuI1XAsyM53HBzMPYBkcl0eSpFJx82HZg/4m32TjkYUiN4e4gxoNwL+I1sW7E1IOhdxo=`
+
+	ori := "amount=10.00&create_time=1681278038000&eth_address=fadf&expire_time=1681278087000&locale=zh_CN&notify_url=fdaf&order_no=fafaf&remark=faf&status=1&subject=faf&time_out=10&trade_no=test123455&tron_address=faf&type=99"
+	//ori = "amount=100&create_time=1681286721000&eth_address=0xafd7a5a575b257a9e51feea07d9ea7a4d8be4c23&expire_time=1681287321000&locale=zh_CN&notify_url=www.google.com&order_no=orderno00000001&remark=remark Test&status=4&subject=testOrder&time_out=10&trade_no=AP2023041216052124855663112&tron_address=TJuUW36VXrv8S6Lno3R5EiGFszY86jKg2F"
+	pubkey, err := GetPublicKey(pub)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(RSAVerify(pubkey, ori, sign))
+}
