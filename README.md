@@ -79,12 +79,13 @@ fp.CreateApplicationOrder(
     })
 
 //提现凭证获取
-fp.TransPrepare(common.TransPrepareRequest{
-    OrderNo:   "004",
-    Amount:    "3.33",
-    ToAddress: "THZB25oFbuogkuHq7BrLXyXLcfKFMesNe9",
-    NotifyUrl: util.StringPtr("www.notifyurl.com"),
-    Remark:    util.StringPtr("remarkkkkk"),
+fp.TransPrepare(
+	common.TransPrepareRequest{
+      OrderNo:   "004",
+      Amount:    "3.33",
+      ToAddress: "THZB25oFbuogkuHq7BrLXyXLcfKFMesNe9",
+      NotifyUrl: util.StringPtr("www.notifyurl.com"),
+      Remark:    util.StringPtr("remarkkkkk"),
 })
 
 //提现确认
