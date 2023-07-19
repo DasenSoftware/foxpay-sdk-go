@@ -27,7 +27,7 @@ func (o *FoxPay) CreateApplicationOrder(args common.OrderRequest) (*common.Data,
 		return nil, err
 	}
 	//处理返回值
-	var result common.OrderResponse
+	var result common.CreateOrderResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err

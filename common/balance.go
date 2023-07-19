@@ -9,8 +9,8 @@ type BalanceResponse struct {
 }
 
 type BalanceDetail struct {
-	Erc20Address     string `json:"erc20_address" mapstructure:"erc20_address"`
-	Trc20Address     string `json:"trc20_address" mapstructure:"trc20_address"`
-	Money            string `json:"money" mapstructure:"money"`
-	TransFreezeMoney string `json:"trans_freeze_money" mapstructure:"trans_freeze_money"' `
+	Erc20Address     *string `json:"erc20_address" mapstructure:"erc20_address"`
+	Trc20Address     *string `json:"trc20_address" mapstructure:"trc20_address"`
+	Money            *string `json:"money" mapstructure:"money"`
+	TransFreezeMoney *string `json:"trans_freeze_money" mapstructure:"trans_freeze_money"' `
 }

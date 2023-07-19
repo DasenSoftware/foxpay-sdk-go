@@ -4,13 +4,13 @@ import "github.com/DasenSoftware/foxpay-sdk-go/common"
 
 // 接口定义
 type foxPayer interface {
-	GetBalance() (*common.BalanceDetail, error)                               //查询资产
-	GetApplicationOrder(no common.OrderOrTradeNo) (*common.Data, error)       //查询订单
-	CloseApplicationOrder(no common.OrderOrTradeNo) (*common.Data, error)     //关闭订单
-	CreateApplicationOrder(args common.OrderRequest) (*common.Data, error)    //创建订单
-	TransPrepare(tp common.TransPrepareRequest) (*common.TransPrepare, error) //提现凭证获取
-	Trans(t common.TransRequest) (*common.Trans, error)                       //提现确认
-	GetTrans(no common.OrderOrTradeNo) (*common.GetTrans, error)              //提现记录查询
+	GetBalance() (*common.BalanceDetail, error)                                   //查询资产
+	GetApplicationOrder(ot common.OrderOrTradeNo) (*common.QueryOrderData, error) //查询订单
+	CloseApplicationOrder(ot common.OrderOrTradeNo) error                         //关闭订单
+	CreateApplicationOrder(args common.OrderRequest) (*common.Data, error)        //创建订单
+	TransPrepare(tp common.TransPrepareRequest) (*common.TransPrepare, error)     //提现凭证获取
+	Trans(t common.TransRequest) (*common.Trans, error)                           //提现确认
+	GetTrans(ot common.OrderOrTradeNo) (*common.GetTrans, error)                  //提现记录查询
 }
 
 // FoxPay 对象

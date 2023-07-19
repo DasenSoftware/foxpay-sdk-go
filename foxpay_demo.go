@@ -1,43 +1,3 @@
-#  FoxPay SDK GO
-## 简介
-
-- 此sdk为方便go开发人员对接foxpay平台收银台功能
-
-- 已实现功能
-
-    - 1.创建订单
-
-    - 2.查询订单
-
-    - 3.关闭订单
-
-    - 4.查询资产
-  
-    - 5.提现凭证获取
-
-    - 6.提现确认
-
-    - 7.提现记录查询
-
-
-## 版本要求
-
-golang >=1.20
-
-
-## 安装
-
-### 手动安装
-
-源码下载：[foxpay-sdk-go](https://github.com/DasenSoftware/foxpay-sdk-go)
-```bash
-go get github.com/DasenSoftware/foxpay-sdk-go
-```
-## 项目使用
-
-
-### 使用示例
-```go
 package main
 
 import (
@@ -131,4 +91,3 @@ func main() {
 	}
 	fmt.Println(getTransResult)
 }
-```

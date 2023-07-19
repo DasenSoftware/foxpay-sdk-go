@@ -87,6 +87,7 @@ func StructToMap(obj interface{}) map[string]interface{} {
 		types := objType.Field(i)
 		if value.Kind() == reflect.Ptr {
 			if value.IsNil() {
+				//fmt.Println(types.Tag.Get("mapstructure"), reflect.TypeOf(value.Interface()))
 				continue
 			}
 			data[types.Tag.Get("mapstructure")] = value.Elem().Interface()

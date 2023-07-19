@@ -14,26 +14,25 @@ import (
 *@description 关闭订单
  */
 
-func (o *FoxPay) CloseApplicationOrder(no common.OrderOrTradeNo) (*common.Data, error) {
+func (o *FoxPay) CloseApplicationOrder(ot common.OrderOrTradeNo) error {
 	url := o.URL + "/sdk/application/closeApplicationOrder" //http请求地址
-	para := util.StructToMap(no)
+	para := util.StructToMap(ot)
 	resp, err := util.HttpRequest(url, para, o.PrivateKey, o.APPID, http.MethodPost)
 	if err != nil {
-		return nil, errors.NewFoxPaySDKError(status.HttpError, err.Error(), "")
+		return errors.NewFoxPaySDKError(status.HttpError, err.Error(), "")
 	}
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	//处理返回值
-	var result common.OrderResponse
+	var result common.CloseOrderResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	if result.Code == status.SUCCESS {
-		return &result.Data, nil
-	} else {
-		return nil, errors.NewFoxPaySDKError(result.Code, result.Message, "")
+	if result.Code != status.SUCCESS {
+		return errors.NewFoxPaySDKError(result.Code, result.Message, "")
 	}
+	return nil
 }

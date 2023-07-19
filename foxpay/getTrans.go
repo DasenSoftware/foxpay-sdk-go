@@ -16,9 +16,9 @@ import (
 @return： error 异常
 */
 
-func (o *FoxPay) GetTrans(no common.OrderOrTradeNo) (*common.GetTrans, error) {
+func (o *FoxPay) GetTrans(ot common.OrderOrTradeNo) (*common.GetTrans, error) {
 	url := o.URL + "/sdk/application/getTrans" //http请求地址
-	para := util.StructToMap(no)
+	para := util.StructToMap(ot)
 	resp, err := util.HttpRequest(url, para, o.PrivateKey, o.APPID, http.MethodPost)
 	if err != nil {
 		return nil, errors.NewFoxPaySDKError(status.HttpError, err.Error(), "")
