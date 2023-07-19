@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func TestFoxPay_GetBalance(t *testing.T) {
+func TestFoxPay(t *testing.T) {
 	appid := "7IJNKYVX"
 	url := "http://139.159.184.46:7600"
 	publicKey := "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn4Q6mbmlSvH6kbeWJERz4rAQeTB/cEShKzgtkrWyaIZqHLgWh5iNdXyME0uaRUutFae1uc+J1yMyVU3cS+K36JUlqThmBHZ6/93KHsRvQ8FAcmBzKB2yVhW4qF0fA71yaWJzgNe93JI/4u3VSfu7tpy3ilPvmZlh6j9z9I+KKkQIDAQAB"
@@ -19,45 +19,43 @@ func TestFoxPay_GetBalance(t *testing.T) {
 		foxpay.WithFoxPayObjPublicKey(publicKey),
 		foxpay.WithFoxPayObjPrivateKey(privateKey),
 	)
-	fmt.Println(
+	fmt.Println( //查询资产
 		fp.GetBalance())
-	fmt.Println(
+	fmt.Println( //查询订单
 		fp.GetApplicationOrder(common.OrderOrTradeNo{
 			//OrderNo: util.StringPtr("004"),
 			TradeNo: util.StringPtr("AP2023071310442022925526694"),
 		}))
-	fmt.Println(
+	fmt.Println( //关闭订单
 		fp.CloseApplicationOrder(common.OrderOrTradeNo{
 			OrderNo: util.StringPtr("004"),
 		}))
 
-	fmt.Println(
+	fmt.Println( //创建订单
 		fp.CreateApplicationOrder(common.OrderRequest{
 			Subject:     "subject001",
 			OrderNo:     "005",
 			Amount:      "3.33",
-			NotifyUrl:   util.StringPtr("nnotifyUrl"),
+			NotifyUrl:   util.StringPtr("notifyUrl"),
 			RedirectUrl: util.StringPtr("redirectUrl"),
 			TimeOut:     5000,
 			Locale:      common.Zh_CN,
 			Remark:      util.StringPtr("remarkTest"),
 		}))
-
-	fmt.Println(
+	fmt.Println( //提现凭证获取
+		fp.TransPrepare(common.TransPrepareRequest{
+			OrderNo:   "005",
+			Amount:    "3.33",
+			ToAddress: "0x3810fe9f57f2f792a1522088c1a62d14cd5b86c4",
+			NotifyUrl: util.StringPtr("notifyUrl"),
+			Remark:    util.StringPtr("remarkTest"),
+		}))
+	fmt.Println( //提现确认
 		fp.Trans(common.TransRequest{
 			TransToken: "2bef669b555e4d12b2cea8368ab0d0dcldatfk",
 		}))
 
-	fmt.Println(
-		fp.TransPrepare(common.TransPrepareRequest{
-			OrderNo:   "",
-			Amount:    "",
-			ToAddress: "",
-			NotifyUrl: util.StringPtr(""),
-			Remark:    util.StringPtr(""),
-		}))
-
-	fmt.Println(
+	fmt.Println( //提现记录查询
 		fp.GetTrans(
 			common.OrderOrTradeNo{
 				OrderNo: util.StringPtr("20230715100001"),
