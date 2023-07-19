@@ -2,22 +2,25 @@ package foxpay
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/DasenSoftware/foxpay-sdk-go/common"
 	errors "github.com/DasenSoftware/foxpay-sdk-go/err"
 	"github.com/DasenSoftware/foxpay-sdk-go/status"
 	"github.com/DasenSoftware/foxpay-sdk-go/util"
 	"io"
+	"net/http"
 )
 
 /*
-@description: 查询订单
-@return:common.BalanceDetail 返回的响应体
+@description: 提现确认
+@return:common.Trans 返回的响应体
+@return： error 异常
 */
 
-func (o *FoxPay) GetBalance() (*common.BalanceDetail, error) {
-	url := o.URL + "/sdk/application/getBalance" //http请求地址
-	param := make(map[string]interface{})
-	resp, err := util.HttpRequest(url, param, o.PrivateKey, o.APPID, "GET")
+func (o *FoxPay) Trans(t common.TransRequest) (*common.Trans, error) {
+	url := o.URL + "/sdk/application/trans" //http请求地址
+	para := util.StructToMap(t)
+	resp, err := util.HttpRequest(url, para, o.PrivateKey, o.APPID, http.MethodPost)
 	if err != nil {
 		return nil, errors.NewFoxPaySDKError(status.HttpError, err.Error(), "")
 	}
@@ -25,17 +28,19 @@ func (o *FoxPay) GetBalance() (*common.BalanceDetail, error) {
 	if err != nil {
 		return nil, err
 	}
-	//处理返回值
-	var result common.BalanceResponse
+	//返回值处理
+	var result common.TransResponse
 	err = json.Unmarshal(respBody, &result)
 	if err != nil {
 		return nil, err
 	}
-	if status.SUCCESS == result.Code { //验签
+
+	if result.Code == status.SUCCESS { //验签
 		//验证返回的响应体header的sign
 		respSign := resp.Header.Get("sign")
 		//将body里的返回，转成map，用于验签
 		m := util.StructToMap(result.Data)
+		fmt.Println("m===", m)
 		//按照字典序排列
 		parmaStr := util.AlphabeticalOrderSort(m)
 		//获取公钥对象
@@ -48,7 +53,7 @@ func (o *FoxPay) GetBalance() (*common.BalanceDetail, error) {
 		if err != nil {
 			return nil, err
 		}
-		if !flag {
+		if !flag { //验签失败
 			return nil, errors.NewFoxPaySDKError(status.SignatureFailedERROR, status.SignatureFailed, "")
 		}
 	} else {

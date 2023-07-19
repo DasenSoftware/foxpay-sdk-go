@@ -1,12 +1,14 @@
 package common
 
 // 查询订单或者关闭订单的请求参数
+
 type OrderOrTradeNo struct {
 	OrderNo *string `json:"order_no,omitempty" mapstructure:"order_no"`
 	TradeNo *string `json:"trade_no,omitempty" mapstructure:"trade_no"`
 }
 
 // 创建订单的结构体
+
 type OrderRequest struct {
 	Subject     string  `json:"subject"  mapstructure:"subject"`
 	OrderNo     string  `json:"order_no" mapstructure:"order_no"`
@@ -19,6 +21,7 @@ type OrderRequest struct {
 }
 
 // 订单相关的响应
+
 type OrderResponse struct {
 	Code    int32  `json:"code" mapstructure:"code"`
 	Data    Data   `json:"data" mapstructure:"data"`

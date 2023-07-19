@@ -45,27 +45,50 @@ fp.GetBalance()
 
 //查询订单
 //OrderNo ，TradeNo 二选一或者都填
-fp.GetApplicationOrder(common.OrderOrTradeNo{
-  OrderNo: util.StringPtr("004"),
-  TradeNo: util.StringPtr("AP2023071310442022925526694"),
-})
+fp.GetApplicationOrder(
+	common.OrderOrTradeNo{
+      OrderNo: util.StringPtr("004"),
+      TradeNo: util.StringPtr("AP2023071310442022925526694"),
+  })
 
 //关闭订单
 //OrderNo ，TradeNo 二选一或者都填
-fp.CloseApplicationOrder(common.OrderOrTradeNo{
-  OrderNo: util.StringPtr("004"),
-  TradeNo: util.StringPtr("AP2023071310442022925526694"),
+fp.CloseApplicationOrder(
+	common.OrderOrTradeNo{
+      OrderNo: util.StringPtr("004"),
+      TradeNo: util.StringPtr("AP2023071310442022925526694"),
 })
 
 //创建订单
-fp.CreateApplicationOrder(common.OrderRequest{
-  Subject:     "subjecttest",
-  OrderNo:     "004",
-  Amount:      "3.33",
-  NotifyUrl:   util.StringPtr("nnotifyUrl"),
-  RedirectUrl: util.StringPtr("redirectUrl"),
-  TimeOut:     5000,
-  Locale:      common.Zh_CN,
-  Remark:      util.StringPtr("remarkTest"),
+fp.CreateApplicationOrder(
+	common.OrderRequest{
+      Subject:     "subjecttest",
+      OrderNo:     "004",
+      Amount:      "3.33",
+      NotifyUrl:   util.StringPtr("nnotifyUrl"),
+      RedirectUrl: util.StringPtr("redirectUrl"),
+      TimeOut:     5000,
+      Locale:      common.Zh_CN,
+      Remark:      util.StringPtr("remarkTest"),
+    })
+
+//提现凭证获取
+fp.TransPrepare(common.TransPrepareRequest{
+    OrderNo:   "004",
+    Amount:    "3.33",
+    ToAddress: "THZB25oFbuogkuHq7BrLXyXLcfKFMesNe9",
+    NotifyUrl: util.StringPtr("www.notifyurl.com"),
+    Remark:    util.StringPtr("remarkkkkk"),
 })
+
+//提现确认
+fp.Trans(common.TransRequest{
+    TransToken: "2bef669b555e4d12b2cea8368ab0d0dcldatfk",
+})
+
+//提现记录查询
+fp.GetTrans(
+  common.OrderOrTradeNo{
+      OrderNo: util.StringPtr("003"),
+  })
 ```

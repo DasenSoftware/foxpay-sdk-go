@@ -1,6 +1,7 @@
 package common
 
 // 余额相关的响应
+
 type BalanceResponse struct {
 	Code    int32         `json:"code"`
 	Data    BalanceDetail `json:"data"`
