@@ -2,7 +2,6 @@ package foxpay
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/DasenSoftware/foxpay-sdk-go/common"
 	errors "github.com/DasenSoftware/foxpay-sdk-go/err"
 	"github.com/DasenSoftware/foxpay-sdk-go/status"
@@ -40,7 +39,6 @@ func (o *FoxPay) Trans(t common.TransRequest) (*common.Trans, error) {
 		respSign := resp.Header.Get("sign")
 		//将body里的返回，转成map，用于验签
 		m := util.StructToMap(result.Data)
-		fmt.Println("m===", m)
 		//按照字典序排列
 		parmaStr := util.AlphabeticalOrderSort(m)
 		//获取公钥对象
