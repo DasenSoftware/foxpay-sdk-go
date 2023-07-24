@@ -51,7 +51,7 @@ func main() {
 	appid := "YOUR-API-ID"
 	url := "YOUR-URL"
 	publicKey := "YOUR-PUBLIC-KEY"
-	privateKey := "YOUR-PRIVATE-key"	
+	privateKey := "YOUR-PRIVATE-KEY"	
 	fp := foxpay.NewFoxPay(
 		foxpay.WithFoxPayObjAPPID(appid),
 		foxpay.WithFoxPayObjURL(url),
