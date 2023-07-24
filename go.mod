@@ -1,3 +1,3 @@
-module github.com/DasenSoftware/foxpay-sdk-go
+module github.com/KamenSoftware/foxpay-sdk-go
 
 go 1.20

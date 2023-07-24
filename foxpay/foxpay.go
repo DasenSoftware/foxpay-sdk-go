@@ -1,6 +1,6 @@
 package foxpay
 
-import "github.com/DasenSoftware/foxpay-sdk-go/common"
+import "github.com/KamenSoftware/foxpay-sdk-go/common"
 
 // 接口定义
 type foxPayer interface {

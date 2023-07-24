@@ -42,9 +42,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/DasenSoftware/foxpay-sdk-go/common"
-	"github.com/DasenSoftware/foxpay-sdk-go/foxpay"
-	"github.com/DasenSoftware/foxpay-sdk-go/util"
+	"github.com/KamenSoftware/foxpay-sdk-go/common"
+	"github.com/KamenSoftware/foxpay-sdk-go/foxpay"
+	"github.com/KamenSoftware/foxpay-sdk-go/util"
 )
 
 func main() {

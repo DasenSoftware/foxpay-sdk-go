@@ -2,10 +2,10 @@ package foxpay
 
 import (
 	"encoding/json"
-	"github.com/DasenSoftware/foxpay-sdk-go/common"
-	errors "github.com/DasenSoftware/foxpay-sdk-go/err"
-	"github.com/DasenSoftware/foxpay-sdk-go/status"
-	"github.com/DasenSoftware/foxpay-sdk-go/util"
+	"github.com/KamenSoftware/foxpay-sdk-go/common"
+	errors "github.com/KamenSoftware/foxpay-sdk-go/err"
+	"github.com/KamenSoftware/foxpay-sdk-go/status"
+	"github.com/KamenSoftware/foxpay-sdk-go/util"
 	"io"
 	"net/http"
 )
