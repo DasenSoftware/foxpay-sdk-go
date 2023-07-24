@@ -31,7 +31,7 @@ golang >=1.20
 
 源码下载：[foxpay-sdk-go](https://github.com/KamenSoftware/foxpay-sdk-go)
 ```bash
-go get github.com/DasenSoftware/foxpay-sdk-go
+go get github.com/KamenSoftware/foxpay-sdk-go
 ```
 ## 项目使用
 
