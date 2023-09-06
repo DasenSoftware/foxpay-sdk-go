@@ -23,3 +23,8 @@ const (
 	Uk_UA = "uk-UA"
 	Es_ES = "es-ES"
 )
+
+const (
+	GAS_TYPE_TRANS_AMOUNT    = "2" //交易金额
+	GAS_TYPE_ACCOUNT_BALANCE = "3" //账户余额
+)

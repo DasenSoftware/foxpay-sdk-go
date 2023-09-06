@@ -8,6 +8,7 @@ type TransPrepareRequest struct {
 	ToAddress *string `json:"to_address"  mapstructure:"to_address"` //提现地址
 	NotifyUrl *string `json:"notify_url" mapstructure:"notify_url"`
 	Remark    *string `json:"remark,omitempty"  mapstructure:"remark"`
+	GasType   *string `json:"gas_type" mapstructure:"gas_type"` //手续费扣除：2 交易金额  3 账户余额
 }
 type TransPrepare struct {
 	TransToken *string `json:"trans_token" mapstructure:"trans_token"`
@@ -38,6 +39,7 @@ type Trans struct {
 	Amount     *string `json:"amount"  mapstructure:"amount"`           //数量
 	Remark     *string `json:"remark"  mapstructure:"remark"`           //备注
 	CreateTime *int64  `json:"create_time"  mapstructure:"create_time"` //创建时间
+	GasType    *int64  `json:"gas_type" mapstructure:"gas_type"`        //提现手续费：2 交易金额  3 账户余额
 }
 
 // 提现记录响应
@@ -61,4 +63,5 @@ type GetTrans struct {
 	TxHash     *string `json:"tx_hash"  mapstructure:"tx_hash"`         //余额
 	Remark     *string `json:"remark"  mapstructure:"remark"`           //备注
 	CreateTime *int64  `json:"create_time"  mapstructure:"create_time"` //创建时间
+	GasType    *int64  `json:"gas_type" mapstructure:"gas_type"`        //提现手续费：2 交易金额  3 账户余额
 }

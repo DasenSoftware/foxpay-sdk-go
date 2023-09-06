@@ -66,6 +66,7 @@ func main() {
 		ToAddress: util.StringPtr("0x3810fe9f57f2f792a1522088c1a62d14cd5b86c4"),
 		NotifyUrl: util.StringPtr("notifyUrl"),
 		Remark:    util.StringPtr("remarkTest"),
+		GasType:   util.StringPtr(common.GAS_TYPE_ACCOUNT_BALANCE),
 	})
 	if err != nil {
 		fmt.Println(err)
