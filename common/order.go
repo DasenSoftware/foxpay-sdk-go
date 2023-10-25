@@ -74,9 +74,9 @@ type QueryOrderData struct {
 	RedirectUrl *string `json:"redirect_url"  mapstructure:"redirect_url"`
 	TradeNo     *string `json:"trade_no"  mapstructure:"trade_no"`
 	Status      *int32  `json:"status"  mapstructure:"status"`
-	Fee         *string `json:"fee,omitempty"  mapstructure:"fee"`       //手续费
-	Balance     *string `json:"balance"  mapstructure:"balance"`         //余额
-	PayTime     *string `json:"pay_time"  mapstructure:"pay_time"`       //支付时间
-	PayAddress  *string `json:"pay_address"  mapstructure:"pay_address"` //支付地址
-	TxHash      *string `json:"tx_hash"  mapstructure:"tx_hash"`         //交易hash
+	Fee         *string `json:"fee,omitempty"  mapstructure:"fee"`       // 手续费
+	Balance     *string `json:"balance"  mapstructure:"balance"`         // 余额
+	PayTime     *int64  `json:"pay_time"  mapstructure:"pay_time"`       // 支付时间
+	PayAddress  *string `json:"pay_address"  mapstructure:"pay_address"` // 支付地址
+	TxHash      *string `json:"tx_hash"  mapstructure:"tx_hash"`         // 交易hash
 }

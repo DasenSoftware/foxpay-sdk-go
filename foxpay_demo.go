@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/KamenSoftware/foxpay-sdk-go/common"
 	"github.com/KamenSoftware/foxpay-sdk-go/foxpay"
 	"github.com/KamenSoftware/foxpay-sdk-go/util"
@@ -18,16 +19,16 @@ func main() {
 		foxpay.WithFoxPayObjPublicKey(publicKey),
 		foxpay.WithFoxPayObjPrivateKey(privateKey),
 	)
-	//查询资产
+	// 查询资产
 	balanceResult, err := fp.GetBalance()
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(balanceResult)
 
-	//查询订单
+	// 查询订单
 	getOrderResult, err := fp.GetApplicationOrder(common.OrderOrTradeNo{
-		//OrderNo: util.StringPtr("004"),
+		// OrderNo: util.StringPtr("004"),
 		TradeNo: util.StringPtr("AP2023071310442022925526694"),
 	})
 	if err != nil {
@@ -35,7 +36,7 @@ func main() {
 	}
 	fmt.Println(getOrderResult)
 
-	//关闭订单
+	// 关闭订单
 	err = fp.CloseApplicationOrder(common.OrderOrTradeNo{
 		OrderNo: util.StringPtr("004"),
 	})
@@ -43,7 +44,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	//创建订单
+	// 创建订单
 	createOrderResp, err := fp.CreateApplicationOrder(common.OrderRequest{
 		Subject:     util.StringPtr("subject001"),
 		OrderNo:     util.StringPtr("005"),
@@ -59,7 +60,7 @@ func main() {
 	}
 	fmt.Println(createOrderResp)
 
-	//提现凭证获取
+	// 提现凭证获取
 	transPrePareResult, err := fp.TransPrepare(common.TransPrepareRequest{
 		OrderNo:   util.StringPtr("005"),
 		Amount:    util.StringPtr("3.33"),
@@ -73,7 +74,7 @@ func main() {
 	}
 	fmt.Println(transPrePareResult)
 
-	//提现确认
+	// 提现确认
 	transResult, err := fp.Trans(common.TransRequest{
 		TransToken: util.StringPtr("2bef669b555e4d12b2cea8368ab0d0dcldatfk"),
 	})
@@ -82,7 +83,7 @@ func main() {
 	}
 	fmt.Println(transResult)
 
-	//提现记录查询
+	// 提现记录查询
 	getTransResult, err := fp.GetTrans(
 		common.OrderOrTradeNo{
 			OrderNo: util.StringPtr("20230715100001"),
